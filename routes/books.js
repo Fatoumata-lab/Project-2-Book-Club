@@ -3,17 +3,7 @@ var router = express.Router();
 const BookModel = require("./../model/bookModel");
 
 
-/* GET books page. */
-
-// router.get("/", async (req, res, next) => {
-//   try {
-
-//     res.render("book/allbooks", { books: await BookModel.find() });
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
+/* Get all books */
 router.get("/", (req, res, next) => {
   BookModel.find()
     .then((dbRes) => {
@@ -28,7 +18,16 @@ router.get("/", (req, res, next) => {
 
 /* Get book details page*/
 router.get('/:id', function(req, res, next) {
-    res.render('book/bookdetail');
+    BookModel.findById(req.params.id)
+    console.log(req.params.id)
+      .then((book) => {
+        res.render("book/bookdetail", {
+          book
+        });
+      })
+      .catch((dbError) => {
+        next(dbError);
+      });
   });
   
 /* Create book page*/

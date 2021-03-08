@@ -1,1 +1,17 @@
 <h1>Book detail</h1>
+
+<div>
+<p>
+    Title: {{book.title}}<br>
+    Author: {{book.author}}
+    Genre: {{book.genre}}<br>
+    Cover: {{book.cover}}<br>
+</p>
+</div>
+<form action="/book/{{id}}" method="POST">
+<button>Delete</button>
+</form>
+
+<form action="/book/edit/{{id}}" method="POST">
+<button>Edit</button>
+</form>
