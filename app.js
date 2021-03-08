@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 require('./config/mongo')
-=======
 require("./config/mongo")
->>>>>>> acadbcbda167c5fd73c0c2fcbc2a39afc72fe7b0
 
 var createError = require('http-errors');
 var express = require('express');
