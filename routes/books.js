@@ -5,46 +5,47 @@ const BookModel = require("./../model/bookModel");
 
 /* GET books page. */
 
-// router.get("/", async (req, res, next) => {
-//   try {
+router.get("/", async (req, res, next) => {
+  try {
+    const books = await BookModel.find()
+    res.render("book/allbooks", { books });
+  } catch (err) {
+    next(err);
+  }
+});
 
-//     res.render("book/allbooks", { books: await BookModel.find() });
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+/* Create book page*/
+router.get('/create', function (req, res, next) {
+  res.render('book/createbook');
+});
 
-router.get("/", (req, res, next) => {
-  BookModel.find()
-    .then((dbRes) => {
-      res.render("book/allbooks", {
-        books: dbRes,
-      });
+/* Get book details page*/
+router.get('/:id', function (req, res, next) {
+  BookModel.findById(req.params.id)
+    .then((book) => {
+      res.render("book/bookdetail", { book });
     })
     .catch((dbError) => {
       next(dbError);
     });
 });
 
-/* Get book details page*/
-router.get('/:id', function(req, res, next) {
-    res.render('book/bookdetail');
-  });
-  
-/* Create book page*/
-router.get('/create', function(req, res, next) {
-    res.render('book/createbook');
-  });
 
-  /* Edit book page*/
-router.get('/edit/:id', function(req, res, next) {
-    res.render('book/editbook');
-  });
 
-    /* Delete book page*/
-router.get('/delete/:id', function(req, res, next) {
-    res.redirect('book/allbooks');
-  });
+/* Edit book page*/
+// router.get('/edit/:id', function (req, res, next) {
+//   BookModel.findById(req.params.id)
+//   console.log(req.params.id)
+//     .then((book) => res.render("book/editbook", { book }))
+//     .catch((dbError) => {
+//       next(dbError);
+//     });
+// });
+
+/* Delete book page*/
+router.get('/delete/:id', function (req, res, next) {
+  res.redirect('book/allbooks');
+});
 
 
 
