@@ -1,4 +1,7 @@
-const user = {
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema ({
     firstName: {
         type: String,
         required: true
@@ -20,7 +23,7 @@ const user = {
       },
     avatar: {
         type: String,
-        default: URL("https://www.qvphysiotherapy.com/wp-content/uploads/2018/12/profile-placeholder.png")
+        default: ("https://www.qvphysiotherapy.com/wp-content/uploads/2018/12/profile-placeholder.png")
     },
     password: {
         type: String,
@@ -28,4 +31,8 @@ const user = {
     },
     role: String,
     whislist: [String]
-}
+})
+
+const UserModel = mongoose.model("users", userSchema);
+
+module.exports = UserModel;

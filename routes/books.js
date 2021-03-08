@@ -1,11 +1,29 @@
 var express = require('express');
 var router = express.Router();
-const book = require("./../model/bookModel");
+const BookModel = require("./../model/bookModel");
 
 
 /* GET books page. */
-router.get('/', function(req, res, next) {
-  res.render('book/allbooks');
+
+// router.get("/", async (req, res, next) => {
+//   try {
+
+//     res.render("book/allbooks", { books: await BookModel.find() });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+router.get("/", (req, res, next) => {
+  BookModel.find()
+    .then((dbRes) => {
+      res.render("book/allbooks", {
+        books: dbRes,
+      });
+    })
+    .catch((dbError) => {
+      next(dbError);
+    });
 });
 
 /* Get book details page*/
