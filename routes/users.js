@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const UserModel = require("./../model/userModel");
+const protectRoute = require('./../middlewares/protectRoute')
 
 /* GET edit page */
 router.get('/edit/:id', function (req, res, next) {
@@ -22,8 +23,9 @@ router.get('/delete/:id', async function (req, res, next) {
   });
 
   /* GET user profile page */
-router.get('profile/:id', function (req, res, next) {
+router.get('profile/:id', protectRoute, function (req, res, next) {
   UserModel.findById(req.params.id)
+  console.log(req.params.id)
     .then((user) => res.render("user/profile", { user }))
     .catch((dbError) => {
       next(dbError);
