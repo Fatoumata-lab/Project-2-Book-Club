@@ -1,4 +1,5 @@
 require('./config/mongo')
+require("dotenv").config();
 
 var createError = require('http-errors');
 var express = require('express');
@@ -29,12 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/books', booksRouter);
-app.use('/auth', authRouter);
-
 // INITIALIZE SESSION
 app.use(
   session({
@@ -43,6 +38,13 @@ app.use(
     resave: true,
   })
 );
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/books', booksRouter);
+app.use('/auth', authRouter);
+
+
 
 // FLASH MESSAGES
 // enable "flash messaging" system

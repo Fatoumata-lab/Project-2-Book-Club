@@ -7,13 +7,9 @@
         Genre: {{book.genre}}<br>
     </p>
 </div>
-<form action="/books/{{book.id}}" method="POST">
-    <button>Delete</button>
-</form>
-{{!-- <form action="/books/edit/{{book.id}}" method="POST">
-    <button>Edit</button>
-</form> --}}
+
+
+
+<a href="/books/delete/{{book.id}}">Delete</a>
 
 <a href="/books/edit/{{book.id}}">EDIT</a>
-
-
