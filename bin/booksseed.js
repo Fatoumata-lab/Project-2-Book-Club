@@ -198,6 +198,10 @@ const books = [
     },
 ]
 
+// books.prototype.random = function () {
+//     return books[Math.floor((Math.random()*books[0].length))];
+//   }
+
 BookModel.deleteMany() 
 .then( BookModel.insertMany(books))
 .then(dbSuccess => {
@@ -206,3 +210,5 @@ BookModel.deleteMany()
 .catch(dbError => {
     console.log(dbError);
 });
+
+

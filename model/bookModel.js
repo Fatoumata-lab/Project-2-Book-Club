@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var random = require('mongoose-simple-random');
+
 
 const bookSchema = new Schema ({
     title: String,
@@ -11,6 +13,8 @@ const bookSchema = new Schema ({
     rating: Number,
     cover: String
 })
+
+bookSchema.plugin(random);
 
 const BookModel = mongoose.model("books", bookSchema);
 

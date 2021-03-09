@@ -2,6 +2,22 @@ var express = require("express");
 var router = express.Router();
 const BookModel = require("./../model/bookModel");
 const uploader = require("./../config/cloudinary");
+const mongoose = require("mongoose");
+
+
+/*Get random page*/
+
+router.get("/", (req, res, next) =>{
+  const BookRandom = mongoose.model('BookRandom', bookSchema);
+console.log("test");
+BookRandom.findOneRandom()
+  .then((randomBookFromDb) => {
+    console.log("test2", randomBookFromDb)
+    res.render("/", { randomBook: randomBookFromDb[0]}) 
+    console.log("randomBookFromDb")
+})
+.catch(next)
+});
 
 /* GET books page. */
 
@@ -77,9 +93,7 @@ router.get("/edit/:id", function (req, res, next) {
 });
 
 
-<<<<<<< HEAD
 /* Delete one book page*/
-=======
 /* Edit book page*/
 router.get('/edit/:id', function (req, res, next) {
   BookModel.findById(req.params.id)
@@ -89,7 +103,6 @@ router.get('/edit/:id', function (req, res, next) {
       next(dbError);
     });
 });
->>>>>>> 8e90466237e2cc9a653b54470e5ea6a7050a34b6
 
 router.get("/delete/:id", async (req, res, next) => {
   try {
@@ -131,21 +144,13 @@ router.post("/edit/:id",uploader.single("cover"), async (req, res, next) => {
   }
 });
 
+/*Get random book*/
 
-
-
-
-
-// router.post("edit/:id", uploader.single("cover"), async (req, res, next) => {
-//   try {
-//     const bookToUpdate = req.body;
-//     if (req.file) bookToUpdate.cover = req.file.path;
-
-//     await BookModel.findByIdAndUpdate(req.params.id, bookToUpdate);
-//     res.redirect("/books");
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+// function random_book(books)
+// {
+//   console.log(books[1])
+// return books[Math.floor(Math.random()*books.length)];
+// }
+// random_book()
 
 module.exports = router;
