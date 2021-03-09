@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+  grid-row-gap: 40px;
+}
+.card-book {
+  width:200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
