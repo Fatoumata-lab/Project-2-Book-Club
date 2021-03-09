@@ -1,0 +1,11 @@
+<h1>Edit my account</h1>
+
+<form method="post" action="/profile/edit{{user._id}}" class="form">
+    <label for="firstName">First name</label>
+    <input class="input" type="text" id="firstName" name="firstName" value="{{user.firstName}}">
+    <label for="lastName">Last name</label>
+    <input class="input" type="text" id="lastName" name="lastName" value="{{user.lastName}}">
+    <label for="email">email</label>
+    <input id="email" class="input" type="email" name="email" value="{{user.email}}">
+    <button class="btn">ok !</button>
+</form>

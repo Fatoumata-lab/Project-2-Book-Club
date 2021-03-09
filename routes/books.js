@@ -77,7 +77,19 @@ router.get("/edit/:id", function (req, res, next) {
 });
 
 
+<<<<<<< HEAD
 /* Delete one book page*/
+=======
+/* Edit book page*/
+router.get('/edit/:id', function (req, res, next) {
+  BookModel.findById(req.params.id)
+  console.log(req.params.id)
+    .then((book) => res.render("book/editbook", { book }))
+    .catch((dbError) => {
+      next(dbError);
+    });
+});
+>>>>>>> 8e90466237e2cc9a653b54470e5ea6a7050a34b6
 
 router.get("/delete/:id", async (req, res, next) => {
   try {
