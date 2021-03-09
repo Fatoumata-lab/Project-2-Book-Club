@@ -1,9 +1,9 @@
 require("dotenv").config();
-require("./../config/mongo");
-const UserModel = require("./../model/userModel");
-const BookModel = require("./../model/bookModel");
-const CommentModel = require("./../model/commentModel");
-const FavoriteModel = require("./../model/favoriteModel");
+require("../config/mongo");
+const UserModel = require("../model/userModel");
+const BookModel = require("../model/bookModel");
+const CommentModel = require("../model/commentModel");
+const FavoriteModel = require("../model/favoriteModel");
 
 const books = [
     {
@@ -197,7 +197,6 @@ const books = [
         cover: "https://images-production.bookshop.org/spree/images/attachments/4143635/original/9780812984965.jpg?1608761340",
     },
 ]
-
 
 BookModel.deleteMany() 
 .then( BookModel.insertMany(books))

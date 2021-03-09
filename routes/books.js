@@ -33,14 +33,14 @@ router.get('/:id', function (req, res, next) {
 
 
 /* Edit book page*/
-// router.get('/edit/:id', function (req, res, next) {
-//   BookModel.findById(req.params.id)
-//   console.log(req.params.id)
-//     .then((book) => res.render("book/editbook", { book }))
-//     .catch((dbError) => {
-//       next(dbError);
-//     });
-// });
+router.get('/edit/:id', function (req, res, next) {
+  BookModel.findById(req.params.id)
+  console.log(req.params.id)
+    .then((book) => res.render("book/editbook", { book }))
+    .catch((dbError) => {
+      next(dbError);
+    });
+});
 
 /* Delete book page*/
 router.get('/delete/:id', function (req, res, next) {

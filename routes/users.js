@@ -11,15 +11,6 @@ router.get('/edit/:id', function (req, res, next) {
     });
 });
 
-/* GET user profile page */
-router.get('/:id', function (req, res, next) {
-  UserModel.findById(req.params.id)
-    .then((user) => res.render("user/profile", { user }))
-    .catch((dbError) => {
-      next(dbError);
-    });
-});
-
 /* GET delete profile page */
 router.get('/delete/:id', async function (req, res, next) {
   try {
@@ -29,5 +20,14 @@ router.get('/delete/:id', async function (req, res, next) {
     next(dbError);
   }
   });
+
+  /* GET user profile page */
+router.get('profile/:id', function (req, res, next) {
+  UserModel.findById(req.params.id)
+    .then((user) => res.render("user/profile", { user }))
+    .catch((dbError) => {
+      next(dbError);
+    });
+});
 
 module.exports = router;
