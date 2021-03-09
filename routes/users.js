@@ -1,34 +1,33 @@
 var express = require('express');
 var router = express.Router();
-
-/* GET signin page */
-router.get('/signin', function(req, res, next) {
-  res.render('user/signin');
-});
-
-/* GET signup page */
-router.get('/signup', function(req, res, next) {
-  res.render('user/signup');
-});
+const UserModel = require("./../model/userModel");
 
 /* GET edit page */
-router.get('/edit/:id', function(req, res, next) {
-  res.render('user/edit');
+router.get('/edit/:id', function (req, res, next) {
+  UserModel.findById(req.params.id)
+    .then((user) => res.render("user/edituser", { user }))
+    .catch((dbError) => {
+      next(dbError);
+    });
 });
 
 /* GET user profile page */
-router.get('/:id', function(req, res, next) {
-  res.render('user/profile');
+router.get('/:id', function (req, res, next) {
+  UserModel.findById(req.params.id)
+    .then((user) => res.render("user/profile", { user }))
+    .catch((dbError) => {
+      next(dbError);
+    });
 });
 
 /* GET delete profile page */
-router.get('/delete/:id', function(req, res, next) {
-  res.redirect('/');
-});
-
-/* Signout */
-router.get('/signout/:id', function(req, res, next) {
-  res.redirect('user/signin');
-});
+router.get('/delete/:id', async function (req, res, next) {
+  try {
+  await UserModel.findByIdAndDelete(req.params.id);
+  res.redirect('/')
+  } catch (dbError) {
+    next(dbError);
+  }
+  });
 
 module.exports = router;
