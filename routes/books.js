@@ -21,7 +21,7 @@ router.get("/create", function (req, res, next) {
 
 /* Post create book page*/
 
-router.post("/create", uploader.single("image"), async (req, res, next) => {
+router.post("/create", uploader.single("cover"), async (req, res, next) => {
   const {
     title,
     author,
@@ -30,12 +30,11 @@ router.post("/create", uploader.single("image"), async (req, res, next) => {
     synopsis,
     comment,
     rating,
-    cover,
   } = req.body; // destructuring syntax here !!!!
 
-  let image;
+  let cover;
   if (req.file) {
-    image = req.file.path;
+cover = req.file.path;
   }
 
   try {
@@ -47,7 +46,7 @@ router.post("/create", uploader.single("image"), async (req, res, next) => {
       synopsis,
       comment,
       rating,
-      cover,
+      cover
     });
     res.redirect("/books");
   } catch (err) {
@@ -77,9 +76,7 @@ router.get("/edit/:id", function (req, res, next) {
 });
 
 
-<<<<<<< HEAD
-/* Delete one book page*/
-=======
+
 /* Edit book page*/
 router.get('/edit/:id', function (req, res, next) {
   BookModel.findById(req.params.id)
@@ -89,8 +86,8 @@ router.get('/edit/:id', function (req, res, next) {
       next(dbError);
     });
 });
->>>>>>> 8e90466237e2cc9a653b54470e5ea6a7050a34b6
 
+/* Delete one book page*/
 router.get("/delete/:id", async (req, res, next) => {
   try {
     await BookModel.findByIdAndDelete(req.params.id);
@@ -113,18 +110,21 @@ router.post("/edit/:id",uploader.single("cover"), async (req, res, next) => {
     cover,
   } = req.body;  // destructuring syntax here !!!!
   const bookToUpdate = req.body;
-  if (req.file) bookToUpdate.cover = req.file.path;
+  if (req.file) {
+    bookToUpdate.cover = req.file.path;
+    console.log("this is the book to update cover" , bookToUpdate.cover);
+  }
+
+else{
+delete bookToUpdate.cover
+console.log("second console log" )
+}
+    
+  console.log(bookToUpdate);
   try {
-    await BookModel.findByIdAndUpdate(req.params.id, {
-      title,
-      author,
-      year,
-      genre,
-      synopsis,
-      comment,
-      rating,
-      cover,
-    });
+    await BookModel.findByIdAndUpdate(req.params.id, 
+     bookToUpdate
+    );
     res.redirect("/books");
   } catch (err) {
     next(err);

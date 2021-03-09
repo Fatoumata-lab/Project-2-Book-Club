@@ -6,11 +6,8 @@
     "start": "nodemon ./bin/www -e .js,.hbs"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "cloudinary": "^1.25.0",
-=======
     "bcrypt": "^5.0.1",
->>>>>>> 8e90466237e2cc9a653b54470e5ea6a7050a34b6
+    "cloudinary": "^1.25.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",

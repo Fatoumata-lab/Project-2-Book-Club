@@ -1,7 +1,7 @@
 <h1>Edit book</h1>
 
 {{!-- action represents the ROUTE you wanna target --}}
-<form method="post" action="/books/edit/{{book.id}}" class="form">
+<form method="post" enctype="multipart/form-data" action="/books/edit/{{book.id}}" class="form">
 
     <label for="title">Title</label><br>
     <input class="input" type="text" id="title" name="title" value="{{book.title}} "><br>
@@ -17,7 +17,7 @@
     <label for="comment">Comment</label><br>
     <input id="comment" class="input" type="text" name="comment" value="{{book.comment}}"><br>
     <label for="cover">Cover</label><br>
-    <input id="cover" class="input" type="file" name="cover" value="{{book.cover}}"><br>
+    <input id="cover" class="input" type="file" name="cover" ><br>
     <button class="btn">Save changes !</button>
 </form>
     
