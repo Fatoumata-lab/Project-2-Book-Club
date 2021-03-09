@@ -25,7 +25,7 @@ router.post("/signin", async (req, res, next) => {
     // DO something
     //   res.render("auth/signin.hbs");
     const { email, password } = req.body;
-    const foundUser = await User.findOne({ email: email });
+    const foundUser = await UserModel.findOne({ email: email });
 
     if (!foundUser) {
         //   Display an error message telling the user that either the password
@@ -63,7 +63,7 @@ router.post("/signin", async (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
     try {
       const newUser = { ...req.body }; // clone req.body with spread operator
-      const foundUser = await User.findOne({ email: newUser.email });
+      const foundUser = await UserModel.findOne({ email: newUser.email });
   
       if (foundUser) {
         req.flash("warning", "Email already registered");
@@ -72,7 +72,7 @@ router.post("/signup", async (req, res, next) => {
         const hashedPassword = bcrypt.hashSync(newUser.password, 10);
         // console.log(newUser.password, hashedPassword);
         newUser.password = hashedPassword;
-        await User.create(newUser);
+        await UserModel.create(newUser);
         req.flash("success", "Congrats ! You are now registered !");
         res.redirect("/auth/signin");
       }

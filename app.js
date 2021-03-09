@@ -1,5 +1,4 @@
 require('./config/mongo')
-require("./config/mongo")
 
 var createError = require('http-errors');
 var express = require('express');
@@ -7,7 +6,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require("hbs");
-
+const session = require("express-session");
+const flash = require("connect-flash");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,6 +34,23 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/auth', authRouter);
+
+// INITIALIZE SESSION
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: true,
+  })
+);
+
+// FLASH MESSAGES
+// enable "flash messaging" system
+// flash relies on the express-session mechanism
+app.use(flash());
+
+app.use(require("./middlewares/exposeFlashMessage"));
+app.use(require("./middlewares/exposeLoginStatus"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
