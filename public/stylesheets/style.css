@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  background-color: rgb(246, 237, 226);
+}
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -19,5 +25,25 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.homecontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image-home{
+ min-width: 50vw;
+ max-height: 60vh ;
+ border-radius: 10px;
+
+}
+.bookcard-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
+
 }
 

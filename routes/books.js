@@ -7,22 +7,22 @@ const mongoose = require("mongoose");
 
 /*Get random page*/
 
-router.get("/", (req, res, next) =>{
-  const BookRandom = mongoose.model('BookRandom', bookSchema);
-console.log("test");
-BookRandom.findOneRandom()
-  .then((randomBookFromDb) => {
-    console.log("test2", randomBookFromDb)
-    res.render("/", { randomBook: randomBookFromDb[0]}) 
-    console.log("randomBookFromDb")
-})
-.catch(next)
-});
-const protectRoute = require('./../middlewares/protectRoute')
+// router.get("/", (req, res, next) =>{
+//   const BookRandom = mongoose.model('BookRandom', bookSchema);
+// console.log("test");
+// BookRandom.findOneRandom()
+//   .then((randomBookFromDb) => {
+//     console.log("test2", randomBookFromDb)
+//     res.render("/", { randomBook: randomBookFromDb[0]}) 
+//     console.log("randomBookFromDb")
+// })
+// .catch(next)
+// });
+//const protectRoute = require('./../middlewares/protectRoute')
 
 /* GET books page. */
 
-router.get("/", protectRoute, async (req, res, next) => {
+router.get("/", /*protectRoute, */ async (req, res, next) => {
   try {
     const books = await BookModel.find();
     res.render("book/allbooks", { books });
@@ -71,6 +71,8 @@ cover = req.file.path;
   }
 });
 
+
+//localhost:3000/books/abc123
 /* Get book details page*/
 router.get("/:id", function (req, res, next) {
   BookModel.findById(req.params.id)
@@ -136,7 +138,7 @@ delete bookToUpdate.cover
 console.log("second console log" )
 }
     
-  console.log(bookToUpdate);
+  //console.log(bookToUpdate);
   try {
     await BookModel.findByIdAndUpdate(req.params.id, 
      bookToUpdate

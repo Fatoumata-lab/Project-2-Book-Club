@@ -1,4 +1,4 @@
-require("./config/mongo")
+
 require('./config/mongo')
 require("dotenv").config();
 
@@ -13,8 +13,9 @@ const flash = require("connect-flash");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var booksRouter = require('./routes/books')
-var authRouter = require("./routes/auth");
+var booksRouter = require('./routes/books');
+var authRouter = require('./routes/auth');
+var commentRouter = require('./routes/comment');
 
 
 var app = express();
@@ -44,6 +45,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/auth', authRouter);
+app.use('/comments', commentRouter);
+
 //app.use(require("./middlewares/exposeFlashMessage"));
 
 

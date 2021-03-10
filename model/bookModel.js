@@ -9,12 +9,15 @@ const bookSchema = new Schema ({
     year: Number,
     genre: [String],
     synopsis: String,
-    comment: [String],
+    comment: {
+        type: Schema.Types.ObjectId, 
+        ref: "comment"
+    },
     rating: Number,
     cover: String
 })
 
-bookSchema.plugin(random);
+// bookSchema.plugin(random);
 
 const BookModel = mongoose.model("books", bookSchema);
 

@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-      <nav id="nav-main">
+      {{!-- <nav id="nav-main">
     <a href="/">home</a>
     <span>|</span>
     {{#unless currentUser}}
@@ -20,8 +20,8 @@
     <span>|</span>
     <a href="/auth/signout">signout</a>
     {{/unless}}
-  </nav>
-    {{!-- {{>nav}} --}}
+  </nav> --}}
+     {{>nav}} 
     {{{body}}}
   </body>
 </html>
