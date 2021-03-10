@@ -1,26 +1,12 @@
-<h1>My profile</h1>
+<h1>{{currentUser.firstName}} {{currentUser.lastName}}</h1>
 
+<img src="{{currentUser.avatar}}" alt="Avatar">
 <div>
-    <img src="{{user.avatar}}" alt="Avatar">
-    <div>
-        First name: {{user.firstName}} <br>
-        Last name: {{user.lastName}} <br>
-        email: {{user.email}}
-    </div>
-    <div>
-        <button>My whishlist</button>
-    </div>
-    <div>
-        <button>Edit my account</button>
-    </div>
+  <p>email: {{currentUser.email}}</p>
 </div>
-
-{{!-- {{#if user}}
-  <h2>Welcome, {{ user.username }}!</h2>
-  <p>This is your profile page my friend!</p>
-  <button>
-    <a href="/userProfile">Reload the page</a>
-  </button>
-{{else}}
-  <p>Still no logged in user, sorry!</p>
-{{/if}} --}}
+<div>
+  <p>My whishlist</p>
+</div>
+<div>
+  <button>Edit my account</button>
+</div>

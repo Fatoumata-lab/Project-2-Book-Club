@@ -15,21 +15,24 @@ router.get('/edit/:id', function (req, res, next) {
 /* GET delete profile page */
 router.get('/delete/:id', async function (req, res, next) {
   try {
-  await UserModel.findByIdAndDelete(req.params.id);
-  res.redirect('/')
+    await UserModel.findByIdAndDelete(req.params.id);
+    res.redirect('/')
   } catch (dbError) {
     next(dbError);
   }
-  });
-
-  /* GET user profile page */
-router.get('profile/:id', protectRoute, function (req, res, next) {
-  UserModel.findById(req.params.id)
-  console.log(req.params.id)
-    .then((user) => res.render("user/profile", { user }))
-    .catch((dbError) => {
-      next(dbError);
-    });
 });
+
+/* GET user profile page */
+router.get("/profile", protectRoute, function (req, res) {
+  res.render("user/profile");
+});
+
+// router.get('/profile', protectRoute, function (req, res, next) {
+//  const founduser = UserModel.findById(req.params.id)
+//     .then((user) => res.render("/user/profile", { user }))
+//     .catch((dbError) => {
+//       next(dbError);
+//     });
+// });
 
 module.exports = router;

@@ -39,13 +39,6 @@ app.use(
   })
 );
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/books', booksRouter);
-app.use('/auth', authRouter);
-
-
-
 // FLASH MESSAGES
 // enable "flash messaging" system
 // flash relies on the express-session mechanism
@@ -53,6 +46,12 @@ app.use(flash());
 
 app.use(require("./middlewares/exposeFlashMessage"));
 app.use(require("./middlewares/exposeLoginStatus"));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/books', booksRouter);
+app.use('/auth', authRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

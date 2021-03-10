@@ -1,14 +1,17 @@
-<form method="post" action="/auth/signup" class="form">
+<form method="post" action="/auth/signup" enctype="multipart/form-data"
+class="form">
     {{> flashMessage }}
 
-    <label for="firstName">First name</label>
-    <input class="input" type="text" id="firstName" name="firstName" value="test name">
-    <label for="lastName">Last name</label>
-    <input class="input" type="text" id="lastName" name="lastName" value="test lastName">
-    <label for="email">email</label>
-    <input class="input" type="email" id="email" name="email" value="test@email.com">
-    <label for="password">password</label>
-    <input class="input" type="password" id="password" name="password" value="12345">
+    <label for="firstName">First name</label><br>
+    <input class="input" type="text" id="firstName" name="firstName" value="test name"><br>
+    <label for="lastName">Last name</label><br>
+    <input class="input" type="text" id="lastName" name="lastName" value="test lastName"><br>
+    <label for="email">email</label><br>
+    <input class="input" type="email" id="email" name="email" value="test@email.com"><br>
+    <label for="password">password</label><br>
+    <input class="input" type="password" id="password" name="password" value="12345"><br>
+    <label for="avatar">Avatar</label><br>
+    <input id="avatar" class="input" type="file" name="avatar" value="test avatar"><br>
     <button class="btn">signup</button>
 </form>
 <p>
