@@ -3,6 +3,7 @@ var router = express.Router();
 const BookModel = require("./../model/bookModel");
 const uploader = require("./../config/cloudinary");
 const mongoose = require("mongoose");
+const protectRoute = require('./../middlewares/protectRoute')
 
 
 /*Get random page*/
@@ -22,7 +23,7 @@ const mongoose = require("mongoose");
 
 /* GET books page. */
 
-router.get("/", /*protectRoute, */ async (req, res, next) => {
+router.get("/", protectRoute, async (req, res, next) => {
   try {
     const books = await BookModel.find();
     res.render("book/allbooks", { books });

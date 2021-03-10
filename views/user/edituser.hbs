@@ -1,12 +1,13 @@
-<h1>Edit my account</h1>
+<h1>{{currentUser.firstName}} {{currentUser.lastName}}</h1>
 
-<form method="post" action="/profile/edit{{user._id}}" class="form">
+<form method="post" enctype="multipart/form-data" action="/users/edit" class="form">
     <label for="firstName">First name</label>
-    <input class="input" type="text" id="firstName" name="firstName" value="{{user.firstName}}">
+    <input class="input" type="text" id="firstName" name="firstName" value="{{currentUser.firstName}}">
     <label for="lastName">Last name</label>
-    <input class="input" type="text" id="lastName" name="lastName" value="{{user.lastName}}">
+    <input class="input" type="text" id="lastName" name="lastName" value="{{currentUser.lastName}}">
     <label for="email">email</label>
-    <input id="email" class="input" type="email" name="email" value="{{user.email}}">
-    <button class="btn">ok !</button>
-    <button>Delete account</button>
+    <input id="email" class="input" type="email" name="email" value="{{currentUser.email}}">
+    <label for="avatar">Avatar</label><br>
+    <input id="avatar" class="input" type="file" name="avatar" value="{{currentUser.avatar}}">
+    <button>Edit account</button>
 </form>

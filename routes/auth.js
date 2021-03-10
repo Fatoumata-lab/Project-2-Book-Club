@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("./../model/userModel");
 const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const uploader = require("./../config/cloudinary");
 
 /* GET signin page */
 router.get('/signin', function (req, res, next) {
@@ -60,25 +62,31 @@ router.post("/signin", async (req, res, next) => {
 });
 
 /* POST signup page */
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", uploader.single("avatar"), async (req, res, next) => {
+  console.log('signup')
   try {
     const newUser = { ...req.body }; // clone req.body with spread operator
     const foundUser = await UserModel.findOne({ email: newUser.email });
 
     if (foundUser) {
+      console.log('if')
       console.log("User email already registered")
       // req.flash("warning", "Email already registered");
       res.redirect("/auth/signup");
     } else {
+      console.log('else')
       const hashedPassword = bcrypt.hashSync(newUser.password, 10);
       // console.log(newUser.password, hashedPassword);
+      console.log(newUser)
       newUser.password = hashedPassword;
       await UserModel.create(newUser);
+      console.log('else3')
       // req.flash("success", "Congrats ! You are now registered !");
       res.redirect("/auth/signin");
     }
   } catch (err) {
-    let errorMessage = "";
+console.log(err);   
+ let errorMessage = "";
     for (field in err.errors) {
       errorMessage += err.errors[field].message + "\n";
     }
