@@ -3,8 +3,8 @@ var router = express.Router();
 const BookModel = require("./../model/bookModel");
 const uploader = require("./../config/cloudinary");
 const mongoose = require("mongoose");
-const protectRoute = require('./../middlewares/protectRoute')
-
+const protectRoute = require('./../middlewares/protectRoute');
+const CommentModel =require("./../model/commentModel");
 
 /*Get random page*/
 
@@ -78,7 +78,14 @@ cover = req.file.path;
 router.get("/:id", function (req, res, next) {
   BookModel.findById(req.params.id)
     .then((book) => {
-      res.render("book/bookdetail", { book });
+
+      CommentModel.find({book:req.params.id})
+      .then(comments =>{
+        res.render("book/bookdetail", { book, comments });
+      }) 
+      .catch((dbError) => {
+        next(dbError);
+      });
     })
     .catch((dbError) => {
       next(dbError);
