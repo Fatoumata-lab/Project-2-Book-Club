@@ -30,7 +30,12 @@ const userSchema = new Schema ({
         required: true
     },
     role: String,
-    whislist: [String]
+    whislist: [String],
+    //this must be the objectId from the book comment
+    comment:{
+      type: Schema.Types.ObjectId, 
+      ref: "comment"
+    }
 })
 
 const UserModel = mongoose.model("users", userSchema);

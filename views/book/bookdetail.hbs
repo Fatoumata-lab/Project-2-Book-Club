@@ -1,15 +1,21 @@
 <h1>{{book.title}}</h1>
-<div>
-    <img src="{{book.cover}}" alt="">
-    <p>
-        
-        Author: {{book.author}}
-        Genre: {{book.genre}}<br>
-    </p>
+<div class="bookcard-container">
+    <div>
+        <img src="{{book.cover}}" alt="">
+        <p>
+
+            Author: {{book.author}}
+            Genre: {{book.genre}}<br>
+        </p>
+        <a href="/books/delete/{{book.id}}">Delete</a>
+
+        <a href="/books/edit/{{book.id}}">EDIT</a>
+    </div>
+    <div>
+        <form class="formcomment" action="/comments/create" method="post">
+            <label for="comment">Comment</label>
+            <input class="input" type="text" id="comment" name="comment" value="test comment">
+            <button>Post comment</button>
+        </form>
+    </div>
 </div>
-
-
-
-<a href="/books/delete/{{book.id}}">Delete</a>
-
-<a href="/books/edit/{{book.id}}">EDIT</a>
