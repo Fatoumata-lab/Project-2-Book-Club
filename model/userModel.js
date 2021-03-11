@@ -30,7 +30,10 @@ const userSchema = new Schema ({
         required: true
     },
     role: String,
-    whislist: [String],
+    whislist: {
+      type: Schema.Types.ObjectId, 
+      ref: "books"
+    },
     //this must be the objectId from the book comment
     comment:{
       type: Schema.Types.ObjectId, 

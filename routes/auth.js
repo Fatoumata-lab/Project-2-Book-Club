@@ -67,10 +67,9 @@ router.post("/signup", uploader.single("avatar"), async (req, res, next) => {
   try {
     const newUser = { ...req.body }; // clone req.body with spread operator
     const foundUser = await UserModel.findOne({ email: newUser.email });
-    
-    let avatar;
+    console.log(req.body)
     if (req.file) {
-    avatar = req.file.path;
+    newUser.avatar = req.file.path;
     }
 
     if (foundUser) {
