@@ -9,7 +9,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require("hbs");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
+const mongoose = require("mongoose");
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,11 +37,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // INITIALIZE SESSION
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
     saveUninitialized: true,
     resave: true,
+    cookie: {
+      maxAge: 25 * 60 * 60 * 1000,
+    }
   })
 );
 
@@ -66,7 +74,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -74,8 +81,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 
 module.exports = app;
