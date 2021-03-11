@@ -41,7 +41,7 @@ router.post("/create/:id", async (req, res, next) => {
 //       });
 
      // });
-      res.redirect(`/books/bookdetail/${book}`);
+      res.redirect(`/books/${book}`);
     } catch (err) {
       next(err);
     }

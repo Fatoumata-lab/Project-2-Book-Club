@@ -4,13 +4,16 @@
         <img src="{{book.cover}}" alt="">
         <p>
 
-            Author: {{book.author}}
+            Author: {{book.author}}<br>
+            Year: {{book.year}}<br>
             Genre: {{book.genre}}<br>
+            Synopsis: {{book.synopsis}}
         </p>
         <a href="/books/delete/{{book.id}}">Delete</a>
 
         <a href="/books/edit/{{book.id}}">EDIT</a>
     </div>
+
     <div>
         <form class="formcomment" action="/comments/create/{{book.id}}" method="post">
             <label for="comment">Comment</label>
@@ -18,4 +21,11 @@
             <button>Post comment</button>
         </form>
     </div>
-</div>
+       {{#each comments}}
+        <p>
+            {{this.date}}<br>
+            {{this.user.lastName}}<br>
+            {{this.comment}}
+        </p>
+        {{/each}}
+  </div>

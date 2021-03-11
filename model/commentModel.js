@@ -4,15 +4,19 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema ({
     user: {
         type: Schema.Types.ObjectId, 
-        ref: "user"
+        ref: "users"
     },
     book: { 
         type: Schema.Types.ObjectId, 
-        ref: "book"
+        ref: "books"
     },
     comment: {
         type: String,
         required: true
+    },
+    date: {
+        type: Date, 
+        default: Date.now
     }
 })
 

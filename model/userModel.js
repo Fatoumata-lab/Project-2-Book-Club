@@ -34,8 +34,9 @@ const userSchema = new Schema ({
     //this must be the objectId from the book comment
     comment:{
       type: Schema.Types.ObjectId, 
-      ref: "comment"
-    }
+      ref: "comments"
+    }, 
+    interest: String,
 })
 
 const UserModel = mongoose.model("users", userSchema);

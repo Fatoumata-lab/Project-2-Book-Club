@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const favoriteSchema = new Schema ({
     user: {
         type: Schema.Types.ObjectId, 
-        ref: "user"
+        ref: "users"
     },
     book: { // to put in an array
         type: [Schema.Types.ObjectId], 
-        ref: "book"
+        ref: "books"
     },
 })
 

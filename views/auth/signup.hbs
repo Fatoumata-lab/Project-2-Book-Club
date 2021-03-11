@@ -1,6 +1,6 @@
 <form method="post" action="/auth/signup" enctype="multipart/form-data"
 class="form">
-    {{!-- {{> flashMessage }} --}}
+    {{> flashMessage }}
 
     <label for="firstName">First name</label><br>
     <input class="input" type="text" id="firstName" name="firstName" value="test name"><br>
@@ -15,5 +15,5 @@ class="form">
     <button class="btn">signup</button>
 </form>
 <p>
-    Already got an account ? <a href="/users/signin">signin</a>
+    Already have an account ? <a href="/users/signin">signin</a>
 </p>
