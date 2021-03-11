@@ -5,7 +5,6 @@ const BookModel = require("./../model/bookModel");
 
 
 /*get comment form on bookdetail page*/
-//localhost:3000/comment/create
 router.get("/create", function (req, res, next) {
     res.render("book/bookdetail");
   });
@@ -28,19 +27,6 @@ router.post("/create/:id", async (req, res, next) => {
         comment
       });
 
-//      BookModel.findByIdAndUpdate(req.params.id)
-//      console.log(req.params.id);
-
-//     .then((newBookModel)=>{
-//         console.log("this is the new model", newBookModel);
-//         res.render("/book/bookdetail", {bookComment : newBookModel});
-//     });
-// });
-//     .catch((dbError) => {
-//         next(dbError);
-//       });
-
-     // });
       res.redirect(`/books/${book}`);
     } catch (err) {
       next(err);
@@ -48,27 +34,15 @@ router.post("/create/:id", async (req, res, next) => {
     
   });
 
+/* Delete one comment */
+// router.get("/delete/:id", async (req, res, next) => {
+//   try {
+//     await CommentModel.findByIdAndDelete({comment: req.params.id});
+//     res.redirect(`/home`);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-//   Book.findOneAndUpdate({_id: req.params.id}, {$push: {authors: author}}, {new: true}, function(err, book) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("author inserted");
-//       res.status(200).send();
-
-    //   router.post("/edit/:id", async (req, res, next) => {
-    //     const { name, email, favLangage, isRegistered } = req.body; // destructuring syntax here !!!!
-    //     try {
-    //       await HackerModel.findByIdAndUpdate(req.params.id, {
-    //         name,
-    //         email,
-    //         favLangage,
-    //         isRegistered: isRegistered === "on",
-    //       });
-    //       res.redirect("/hackers");
-    //     } catch (err) {
-    //       next(err);
-    //     }
-    //   });
 
   module.exports = router;

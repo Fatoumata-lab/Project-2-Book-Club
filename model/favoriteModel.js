@@ -8,7 +8,7 @@ const favoriteSchema = new Schema ({
         ref: "users"
     },
     book: { // to put in an array
-        type: [Schema.Types.ObjectId], 
+        type: Schema.Types.ObjectId, 
         ref: "books"
     },
 })

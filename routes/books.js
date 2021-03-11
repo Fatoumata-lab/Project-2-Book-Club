@@ -79,7 +79,7 @@ router.get("/:id", function (req, res, next) {
   BookModel.findById(req.params.id)
     .then((book) => {
 
-      CommentModel.find({book:req.params.id}).populate({path:"user", select:"lastName"})
+      CommentModel.find({book:req.params.id}).populate("user")
       .then(comments =>{
         res.render("book/bookdetail", { book, comments });
       }) 
