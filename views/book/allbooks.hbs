@@ -1,14 +1,13 @@
 <h1>All books</h1>
- <a href="/books/create"> Add book</a>
+<a href="/books/create"> Add book</a>
 
 <div class="cards">
     {{#each books}}
-    <div class="card-book" style="background-image: url({{cover}}">
-        <a href="/books/{{this._id}}">
-            {{this.title}}
-        </a>
-     
+        <div>
+            <img class="cover-image" src="{{cover}}" alt="Book Cover">
+            <div>
+                <a href="/books/{{this._id}}">{{this.title}}</a>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
-    
-</div>

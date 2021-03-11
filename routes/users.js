@@ -14,11 +14,13 @@ router.get('/edit', protectRoute, function (req, res, next) {
 });
 
 /* GET delete profile page */
-router.get('/delete/:id', async function (req, res, next) {
+router.get('/delete', async function (req, res, next) {
   try {
-    await UserModel.findByIdAndDelete(req.params.id);
+    const deletedUser = await UserModel.findByIdAndDelete(req.session.currentUser._id);
+    req.session.destroy()
     res.redirect('/')
   } catch (dbError) {
+    console.log(err)
     next(dbError);
   }
 });

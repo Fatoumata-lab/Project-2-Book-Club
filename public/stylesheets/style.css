@@ -43,7 +43,10 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
- 
-
 }
 
+.cover-image {
+  width: 220px;
+  height: 300px;
+  margin-bottom: 10px;
+}
