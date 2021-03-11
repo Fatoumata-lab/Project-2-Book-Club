@@ -38,23 +38,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // INITIALIZE SESSION
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    store: MongoStore.create({mongooseConnection: mongoose.connection}),
-    saveUninitialized: true,
-    resave: true,
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
+//     saveUninitialized: true,
+//     resave: true,
+//     cookie: {
+//       maxAge: 25 * 60 * 60 * 1000,
+//     }
+//   })
+// );
 
 
 // FLASH MESSAGES
 // enable "flash messaging" system
 // flash relies on the express-session mechanism
-app.use(flash());
+// app.use(flash());
 
-app.use(require("./middlewares/exposeFlashMessage"));
-app.use(require("./middlewares/exposeLoginStatus"));
+// app.use(require("./middlewares/exposeFlashMessage"));
+// app.use(require("./middlewares/exposeLoginStatus"));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
