@@ -7,7 +7,7 @@ const commentSchema = new Schema ({
         ref: "user"
     },
     book: { 
-        type: [Schema.Types.ObjectId], 
+        type: Schema.Types.ObjectId, 
         ref: "book"
     },
     comment: {

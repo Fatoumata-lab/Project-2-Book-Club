@@ -12,12 +12,14 @@ router.get("/create", function (req, res, next) {
 
 /* post comment create on bookdetail page*/
 
-router.post("/create", async (req, res, next) => {
+router.post("/create/:id", async (req, res, next) => {
     // this is the request body > an object containing the posted informations"
     console.log(req.body);
     // remember : keys are set on the HTML form with the name attributes !!!
-    const { user,book,comment } = req.body; // destructuring syntax here !!!!
-    console.log(user,book,comment) ;
+    const { comment } = req.body; // destructuring syntax here !!!!
+    const book = req.params.id;
+    const user = req.session.currentUser._id;
+    console.log(book,comment) ;
    
     try {
       await CommentModel.create({
@@ -25,11 +27,21 @@ router.post("/create", async (req, res, next) => {
         book,
         comment
       });
-     // BookModel.findByIdAndUpdate({req.params.id})
-      //}
+
+//      BookModel.findByIdAndUpdate(req.params.id)
+//      console.log(req.params.id);
+
+//     .then((newBookModel)=>{
+//         console.log("this is the new model", newBookModel);
+//         res.render("/book/bookdetail", {bookComment : newBookModel});
+//     });
+// });
+//     .catch((dbError) => {
+//         next(dbError);
+//       });
 
      // });
-      res.redirect("/books/{{this.book._id}}");
+      res.redirect(`/books/bookdetail/${book}`);
     } catch (err) {
       next(err);
     }

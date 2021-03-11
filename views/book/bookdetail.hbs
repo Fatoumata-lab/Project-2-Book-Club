@@ -12,7 +12,7 @@
         <a href="/books/edit/{{book.id}}">EDIT</a>
     </div>
     <div>
-        <form class="formcomment" action="/comments/create" method="post">
+        <form class="formcomment" action="/comments/create/{{book.id}}" method="post">
             <label for="comment">Comment</label>
             <input class="input" type="text" id="comment" name="comment" value="test comment">
             <button>Post comment</button>
