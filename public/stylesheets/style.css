@@ -1,8 +1,12 @@
 *{
   box-sizing: border-box;
   background-color: rgb(246, 237, 226);
+
 }
 
+#nav-main {
+  margin-bottom: 5%;
+}
 
 body {
   padding: 50px;
@@ -17,6 +21,7 @@ a {
   display: grid;
   grid-template-columns: repeat(4,auto);
   grid-row-gap: 40px;
+  margin-top: 3%;
 }
 .card-book {
   width:200px;
@@ -41,7 +46,7 @@ a {
 }
 .bookcard-container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 
@@ -49,4 +54,29 @@ a {
   width: 220px;
   height: 300px;
   margin-bottom: 10px;
+}
+
+.profilepic {
+  width: 40%;
+  height: 30%;
+}
+
+.btn {
+  width : 25%;
+  height: 30px;
+  margin-bottom: 2%;
+  background-color: #00B7FF;
+  margin: 2% 0%;
+  color: white;
+}
+
+.btn-text {
+  color: white;
+  background-color: #00B7FF;
+  text-decoration: none;
+}
+
+.allbooks {
+  justify-content: center;
+  text-align: center;
 }

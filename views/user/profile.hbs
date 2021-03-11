@@ -1,18 +1,18 @@
 <h1>{{currentUser.firstName}} {{currentUser.lastName}}</h1>
 
-<img src="{{currentUser.avatar}}" alt="Avatar">
+<img class = "profilepic" src="{{currentUser.avatar}}" alt="Avatar">
 <div>
-  <p>My interests: {{currentUser.interest}}</p>
+  <p><b>My interests:</b> {{currentUser.interest}}</p>
 </div>
 <div>
-  <p>My email: {{currentUser.email}}</p>
+  <p><b>My email:</b> {{currentUser.email}}</p>
 </div>
 <div>
-  <p>My whishlist</p>
+  <p><b>My whishlist:</b></p>
 </div>
 <div>
-  <a href='/users/edit'>Edit my account</a>
+  <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit my account</a></button>
 </div>
 <div>
-  <a href='/users/delete'>Delete my account</a>
+   <button class = "btn"><a class = "btn-text" href='/users/delete'>Delete my account</a></button>
 </div>

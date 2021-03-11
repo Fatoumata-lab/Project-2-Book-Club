@@ -1,17 +1,17 @@
 <h1>{{book.title}}</h1>
 <div class="bookcard-container">
     <div>
-        <img src="{{book.cover}}" alt="">
+        <img class = "cover-image" src="{{book.cover}}" alt="">
         <p>
 
-            Author: {{book.author}}<br>
-            Year: {{book.year}}<br>
-            Genre: {{book.genre}}<br>
-            Synopsis: {{book.synopsis}}
+            <b>Author:</b> {{book.author}}<br>
+            <b>Year:</b> {{book.year}}<br>
+            <b>Genre:</b> {{book.genre}}<br>
+            <b>Synopsis:</b> {{book.synopsis}}
         </p>
-        <a href="/books/delete/{{book.id}}">Delete</a>
+        <button class = "btn"><a class = "btn-text" href="/books/delete/{{book.id}}">Delete book</a></button>
 
-        <a href="/books/edit/{{book.id}}">EDIT</a>
+        <button class = "btn"><a class = "btn-text" href="/books/edit/{{book.id}}">Edit book</a></button>
     </div>
 
     <div>
