@@ -9,6 +9,11 @@
 </div>
 <div>
   <p><b>My whishlist:</b></p>
+   {{#each favorite}}
+    <p>
+        {{this.book.title}}
+    </p>
+    {{/each}}
 </div>
 <div>
   <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit my account</a></button>

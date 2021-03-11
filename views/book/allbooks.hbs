@@ -3,11 +3,14 @@
 
 <div class="cards">
     {{#each books}}
+    <div>
         <div>
-            <img class="cover-image" src="{{cover}}" alt="Book Cover">
-            <div>
-                <a href="/books/{{this._id}}">{{this.title}}</a>
-            </div>
+            <p>{{this.title}}</p>
         </div>
-        {{/each}}
+        <img class="cover-image" src="{{cover}}" alt="Book Cover">
+        <div>
+            <a href="/books/{{this._id}}">See details</a>
+        </div>
     </div>
+    {{/each}}
+</div>

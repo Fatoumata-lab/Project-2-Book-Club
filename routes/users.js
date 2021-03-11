@@ -3,6 +3,7 @@ var router = express.Router();
 const UserModel = require("./../model/userModel");
 const protectRoute = require('./../middlewares/protectRoute')
 const uploader = require("./../config/cloudinary");
+const FavoriteModel = require('./../model/favoriteModel')
 
 /* GET edit profile page */
 router.get('/edit', protectRoute, function (req, res, next) {
@@ -16,7 +17,7 @@ router.get('/edit', protectRoute, function (req, res, next) {
 /* GET delete profile page */
 router.get('/delete', async function (req, res, next) {
   try {
-    const deletedUser = await UserModel.findByIdAndDelete(req.session.currentUser._id);
+    await UserModel.findByIdAndDelete(req.session.currentUser._id);
     req.session.destroy()
     res.redirect('/')
   } catch (dbError) {
@@ -27,8 +28,16 @@ router.get('/delete', async function (req, res, next) {
 
 /* GET profile page */
 router.get("/profile", protectRoute, function (req, res) {
-  res.render("user/profile");
+  console.log(req.session.currentUser._id)
+ FavoriteModel.find({user: req.session.currentUser._id}).populate("book")
+  .then(favorite => {
+    console.log(favorite)
+    res.render("user/profile", {favorite});
+  })
+  .catch((dbError) => {
+  next(dbError);
 });
+})
 
 /* POST edit profile page */
 router.post("/edit",uploader.single("avatar"), async (req, res, next) => {
