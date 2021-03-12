@@ -6,22 +6,28 @@
         </div>
 
         <div class="list-style">
-          <h1 class="allbookstitle">{{currentUser.firstName}} {{currentUser.lastName}}</h1>
-          <p><b>My interests:</b> {{currentUser.interest}}</p>
-          <p><b>My email:</b> {{currentUser.email}}</p>
-          <p><b>My whishlist:</b></p>
+          <h2 class="allbookstitle">{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+          <p><b>My interests:</b> {{currentUser.interest}}</p><br>
+
+          <p><b>My email:</b> {{currentUser.email}}</p><br>
+
+          <p><b>My whishlist:</b></p><br>
       {{#each favorite}}
         <p>
-            {{this.book.title}}
-        </p>
+          <ul>
+          <li>
+            <a class = "profil-link" href="/books/{{this.book._id}}">{{this.book.title}}</a>
+        </li>
+        </ul>
+      </p>
         {{/each}}
         </div>
 
     </div>
 
     <div>
-      <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit my account</a></button>
-      <button class = "btn"><a class = "btn-text" href='/users/delete'>Delete my account</a></button>
+      <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit account</a></button>
+      <button class = "btn"><a class = "btn-text" href='/users/delete'>Delete account</a></button>
     </div>
 
 </div>

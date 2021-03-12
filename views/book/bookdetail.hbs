@@ -36,9 +36,9 @@
 <div class="comment-section"> 
     <div>
         <form class="formcomment" action="/comments/create/{{book.id}}" method="post">
-            <label for="comment">Comment</label>
-            <textarea class="input" type="comment" id="comment" name="comment" value="test comment"></textarea><br>
-            <button>Post comment</button>
+            {{!-- <label for="comment">Comment</label> --}}
+            <textarea class="input" type="comment" id="comment" name="comment" value="test comment"></textarea>
+            <button class="form-favorites">Post comment</button>
     </div>
 
     {{#each comments}}

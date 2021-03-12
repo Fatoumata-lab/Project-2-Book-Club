@@ -6,6 +6,7 @@
 body {
   margin-top: 80px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 #nav-main {
@@ -35,6 +36,18 @@ a {
   text-shadow: 1px 1px tomato;
   box-shadow: 1px 1px 2px 2px gainsboro;
 }
+
+.profil-link {
+padding: 3px;
+text-transform: none;
+background-color: rgb(243, 239, 236);
+color:black;
+font-weight: normal;
+font-size: 14px;
+text-shadow: none;
+box-shadow: none;
+}
+
 .nav-text {
   
   width: 250px;
@@ -46,8 +59,9 @@ a {
 
 .allbookstitle{
   text-align: center;
-  font-style: oblique;
-  color: rgb(40, 38, 38);
+  color: rgb(175, 94, 90);
+  margin-top: 100px;
+  text-decoration: underline;
   }
 
 
@@ -163,6 +177,8 @@ a {
   text-align: center;
   padding: 28px;
   box-shadow: 1px 1px tomato;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 .image-home{
  min-width: 50vw;
@@ -172,7 +188,7 @@ a {
 }
 .bookcard-container{
 
-margin: 10px;
+margin: 20px;
 
   /* display: flex;
   flex-direction: column;
@@ -196,18 +212,22 @@ margin: 10px;
 }
 
 .btn {
-  width : 25%;
-  height: 30px;
+  /* width : 25%;
+  height: 30px; */
   margin-bottom: 2%;
-  background-color: #00B7FF;
+  /* background-color: #00B7FF; */
   margin: 2% 0%;
   color: white;
+  border : none;
 }
 
+
 .btn-text {
-  color: white;
+  /* color: white;
   background-color: #00B7FF;
-  text-decoration: none;
+  text-decoration: none; */
+  text-transform: lowercase;
+  font-weight: lighter;
 }
 
 .allbooks {
@@ -247,10 +267,10 @@ input, textarea {
 }
 
 .login-image {
-  min-width: 45vw;
-  max-height: 60vh ;
+  width: 520px;
+  height: 400px ;
   border-radius: 15px;
-  
+  margin-bottom: 3%;
 }
 
 .image-login {
@@ -265,6 +285,14 @@ input, textarea {
 
 .formcomment {
   margin-bottom: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+textarea {
+  height: 100px;
 }
 
 .editPagesMargin {
@@ -274,4 +302,9 @@ input, textarea {
   justify-content: center;
   align-items: center;
   text-align: left;
+}
+
+.form-favorites {
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
