@@ -257,3 +257,11 @@ input, textarea {
   justify-content: center;
   align-items: center;
 }
+
+.editbook {
+  margin-bottom: 2%;
+}
+
+.formcomment {
+  margin-bottom: 3%;
+}

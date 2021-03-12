@@ -1,21 +1,27 @@
-<h1>{{currentUser.firstName}} {{currentUser.lastName}}</h1>
+<div class="bookcard-container">
+    <div class="bookdetails">
 
-<img class = "profilepic" src="{{currentUser.avatar}}" alt="Avatar">
-<div>
-  <p><b>My interests:</b> {{currentUser.interest}}</p>
-</div>
-<div>
-  <p><b>My email:</b> {{currentUser.email}}</p>
-</div>
-<div>
-  <p><b>My whishlist:</b></p>
-   {{#each favorite}}
-    <p>
-        {{this.book.title}}
-    </p>
-    {{/each}}
-</div>
-<div>
-  <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit my account</a></button>
-   <button class = "btn"><a class = "btn-text" href='/users/delete'>Delete my account</a></button>
+        <div>
+        <img class="cover-image" src="{{currentUser.avatar}}" alt="Avatar">
+        </div>
+
+        <div class="list-style">
+          <h1 class="allbookstitle">{{currentUser.firstName}} {{currentUser.lastName}}</h1>
+          <p><b>My interests:</b> {{currentUser.interest}}</p>
+          <p><b>My email:</b> {{currentUser.email}}</p>
+          <p><b>My whishlist:</b></p>
+      {{#each favorite}}
+        <p>
+            {{this.book.title}}
+        </p>
+        {{/each}}
+        </div>
+
+    </div>
+
+    <div>
+      <button class = "btn"><a class = "btn-text" href='/users/edit'>Edit my account</a></button>
+      <button class = "btn"><a class = "btn-text" href='/users/delete'>Delete my account</a></button>
+    </div>
+
 </div>
