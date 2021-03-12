@@ -79,10 +79,11 @@ router.get("/:id", protectRoute, function (req, res, next) {
 
 /* GET edit book page : Render book details page if user signed in */
 
-router.get('/edit/:id', protectRoute, function (req, res, next) {
+
+router.get("/edit/:id", function (req, res, next) {
   BookModel.findById(req.params.id)
-  console.log(req.params.id)
-    .then((book) => res.render("book/editbook", { book }))
+    //console.log(req.params.id)
+    .then((bookDB) => res.render("book/editbook", { book: bookDB }))
     .catch((dbError) => {
       next(dbError);
     });
