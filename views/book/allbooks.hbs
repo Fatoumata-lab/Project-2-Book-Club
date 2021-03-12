@@ -1,16 +1,16 @@
-<h1 class = "allbooks">All books</h1>
-<button class = "btn"><a class = "btn-text" href="/books/create"> Add a book</a></button>
 
+<h1 class="allbookstitle">OUR BOOKS SELECTION</h1>
 <div class="cards">
     {{#each books}}
-    <div>
-        <div>
-            <p>{{this.title}}</p>
-        </div>
+
+    <div class="book-style">
+        <h3>{{this.title}}</h3>
         <img class="cover-image" src="{{cover}}" alt="Book Cover">
-        <div>
-            <a href="/books/{{this._id}}">See details</a>
-        </div>
+        <a href="/books/{{this._id}}">See details</a>
     </div>
     {{/each}}
+    <div class="book-style">
+        <h3></h3>
+        <button class="cover-image"><a class="btn-text" href="/books/create"> Add a book</a></button>
+    </div>
 </div>

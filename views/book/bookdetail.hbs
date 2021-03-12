@@ -1,37 +1,54 @@
-<h1>{{book.title}}</h1>
+
 <div class="bookcard-container">
-    <div>
-        <img class = "cover-image" src="{{book.cover}}" alt="">
-        <p>
+    
+    <div class="bookdetails">
+       
+        <div>
+        <img class="cover-image" src="{{book.cover}}" alt="">
+        </div>
+        
+        <div class="list-style">
 
-            <b>Author:</b> {{book.author}}<br>
-            <b>Year:</b> {{book.year}}<br>
-            <b>Genre:</b> {{book.genre}}<br>
-            <b>Synopsis:</b> {{book.synopsis}}
-        </p>
-        <button class = "btn"><a class = "btn-text" href="/books/delete/{{book.id}}">Delete book</a></button>
+            <h2 class="allbookstitle">{{book.title}}</h2>
 
-        <button class = "btn"><a class = "btn-text" href="/books/edit/{{book.id}}">Edit book</a></button>
+            <p><b>Author:</b> {{book.author}}</p><br>
+
+            <p><b>Year:</b> {{book.year}}</p><br>
+
+            <p> <b>Genre:</b> {{book.genre}}</p><br>
+
+            <p class = "synopsis"><b>Synopsis:</b> {{book.synopsis}}</p><br>
+        </div>
+
+       
     </div>
+
 
     <div>
         <form class="form-favorites" action="/favorites/add/{{book.id}}" method="post">
             <button>Add to my whishlist</button>
         </form>
+ <button class="btn"><a class="btn-text" href="/books/delete/{{book.id}}">Delete book</a></button>
+
+        <button class="btn"><a class="btn-text" href="/books/edit/{{book.id}}">Edit book</a></button>
     </div>
+
+<div class="comment-section"> 
     <div>
         <form class="formcomment" action="/comments/create/{{book.id}}" method="post">
             <label for="comment">Comment</label>
             <input class="input" type="text" id="comment" name="comment" value="test comment">
             <button>Post comment</button>
+    </div>
+
+    {{#each comments}}
+    <div class="commentBox">
+        <p class=" comment">{{this.comment}}</p><br>
+        <p class="date"> Date: {{this.date}}</p>
+        <p class="name"> Name: {{this.user.lastName}}</p><br>
 
     </div>
-    {{#each comments}}
-    <p>
-        {{this.date}}<br>
-        {{this.user.lastName}}<br>
-        {{this.comment}}
-    </p>
-        {{!-- <a href="/comments/delete/{{comment._id}}">Delete</a> --}}
+    {{!-- <a href="/comments/delete/{{comment._id}}">Delete</a> --}}
     {{/each}}
+    </div>
 </div>
