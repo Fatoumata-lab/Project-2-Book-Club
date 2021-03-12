@@ -248,12 +248,21 @@ input, textarea {
 
 .login-image {
   min-width: 45vw;
-  max-height: 65vh ;
-  border-radius: 10px;
+  max-height: 60vh ;
+  border-radius: 15px;
+  
 }
 
 .image-login {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.editPagesMargin{
+  margin-top:190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
 }

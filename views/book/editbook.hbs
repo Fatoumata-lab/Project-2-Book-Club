@@ -1,5 +1,8 @@
-<h1>Edit book</h1>
 
+<div class="editPagesMargin">
+<div>
+<h1>Edit book</h1>
+</div>
 {{!-- action represents the ROUTE you wanna target --}}
 <form method="post" enctype="multipart/form-data" action="/books/edit/{{book.id}}" class="form">
 
@@ -18,4 +21,4 @@
     <input id="cover" class="input" type="file" name="cover" ><br>
     <button class="btn">Save changes !</button>
 </form>
-    
+    </div>
