@@ -4,24 +4,9 @@ const BookModel = require("./../model/bookModel");
 const uploader = require("./../config/cloudinary");
 const mongoose = require("mongoose");
 const protectRoute = require('./../middlewares/protectRoute');
-const CommentModel =require("./../model/commentModel");
+const CommentModel = require("./../model/commentModel");
 
-/*Get random page*/
-
-// router.get("/", (req, res, next) =>{
-//   const BookRandom = mongoose.model('BookRandom', bookSchema);
-// console.log("test");
-// BookRandom.findOneRandom()
-//   .then((randomBookFromDb) => {
-//     console.log("test2", randomBookFromDb)
-//     res.render("/", { randomBook: randomBookFromDb[0]}) 
-//     console.log("randomBookFromDb")
-// })
-// .catch(next)
-// });
-//const protectRoute = require('./../middlewares/protectRoute')
-
-/* GET books page. */
+/* GET books page : Render books page if user signed in */
 
 router.get("/", protectRoute, async (req, res, next) => {
   try {
@@ -32,12 +17,13 @@ router.get("/", protectRoute, async (req, res, next) => {
   }
 });
 
-/* get Create book page*/
-router.get("/create", function (req, res, next) {
+/* GET create book page : Render create a book page if user signed in */
+
+router.get("/create", protectRoute, function (req, res, next) {
   res.render("book/createbook");
 });
 
-/* Post create book page*/
+/* POST create book page : Create a new book in the DB and redirect to books page */
 
 router.post("/create", uploader.single("cover"), async (req, res, next) => {
   const {
@@ -48,11 +34,11 @@ router.post("/create", uploader.single("cover"), async (req, res, next) => {
     synopsis,
     comment,
     rating,
-  } = req.body; // destructuring syntax here !!!!
+  } = req.body;
 
   let cover;
   if (req.file) {
-cover = req.file.path;
+    cover = req.file.path;
   }
 
   try {
@@ -72,39 +58,28 @@ cover = req.file.path;
   }
 });
 
+/* GET book details page : Render book details page if user signed in */
 
-//localhost:3000/books/abc123
-/* Get book details page*/
-router.get("/:id", function (req, res, next) {
+router.get("/:id", protectRoute, function (req, res, next) {
   BookModel.findById(req.params.id)
     .then((book) => {
 
-      CommentModel.find({book:req.params.id}).populate("user")
-      .then(comments =>{
-        res.render("book/bookdetail", { book, comments });
-      }) 
-      .catch((dbError) => {
-        next(dbError);
-      });
+      CommentModel.find({ book: req.params.id }).populate("user")
+        .then(comments => {
+          res.render("book/bookdetail", { book, comments });
+        })
+        .catch((dbError) => {
+          next(dbError);
+        });
     })
     .catch((dbError) => {
       next(dbError);
     });
 });
 
-/* GET Edit book page*/
-router.get("/edit/:id", function (req, res, next) {
-  BookModel.findById(req.params.id)
-    //console.log(req.params.id)
-    .then((bookDB) => res.render("book/editbook", { book: bookDB }))
-    .catch((dbError) => {
-      next(dbError);
-    });
-});
+/* GET edit book page : Render book details page if user signed in */
 
-
-/* Edit book page*/
-router.get('/edit/:id', function (req, res, next) {
+router.get('/edit/:id', protectRoute, function (req, res, next) {
   BookModel.findById(req.params.id)
   console.log(req.params.id)
     .then((book) => res.render("book/editbook", { book }))
@@ -113,8 +88,9 @@ router.get('/edit/:id', function (req, res, next) {
     });
 });
 
-/* Delete one book page*/
-router.get("/delete/:id", async (req, res, next) => {
+/* GET delete one book page : Delete one book page & redirect to books page if user signed in */
+
+router.get("/delete/:id", protectRoute, async (req, res, next) => {
   try {
     await BookModel.findByIdAndDelete(req.params.id);
     res.redirect("/books");
@@ -123,8 +99,9 @@ router.get("/delete/:id", async (req, res, next) => {
   }
 });
 
-/* POST Edit one book page*/
-router.post("/edit/:id",uploader.single("cover"), async (req, res, next) => {
+/* POST edit one book page : Edit one book page & redirect to books page if user signed in */
+
+router.post("/edit/:id", protectRoute, uploader.single("cover"), async (req, res, next) => {
   const {
     title,
     author,
@@ -134,36 +111,18 @@ router.post("/edit/:id",uploader.single("cover"), async (req, res, next) => {
     comment,
     rating,
     cover,
-  } = req.body;  // destructuring syntax here !!!!
+  } = req.body;
   const bookToUpdate = req.body;
-  if (req.file) {
-    bookToUpdate.cover = req.file.path;
-    console.log("this is the book to update cover" , bookToUpdate.cover);
-  }
-
-else{
-delete bookToUpdate.cover
-console.log("second console log" )
-}
-    
-  //console.log(bookToUpdate);
+  if (req.file) { bookToUpdate.cover = req.file.path }
+  else { delete bookToUpdate.cover }
   try {
-    await BookModel.findByIdAndUpdate(req.params.id, 
-     bookToUpdate
+    await BookModel.findByIdAndUpdate(req.params.id,
+      bookToUpdate
     );
     res.redirect("/books");
   } catch (err) {
     next(err);
   }
 });
-
-/*Get random book*/
-
-// function random_book(books)
-// {
-//   console.log(books[1])
-// return books[Math.floor(Math.random()*books.length)];
-// }
-// random_book()
 
 module.exports = router;
