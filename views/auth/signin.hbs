@@ -1,12 +1,16 @@
 <form method="post" action="/auth/signin" class="form">
         {{> flashMessage }}
 
-    <label for="email">email</label>
-    <input class="input" type="email" id="email" name="email" value="test@email.com">
-    <label for="password">password</label>
+    <label for="email">Email</label>
+    <input class="input" type="email" id="email" name="email" value="test@email.com"><br>
+    <label for="password">Password</label>
     <input class="input" type="password" id="password" name="password" value="12345"><br>
-    <button class="btn">signin</button>
+    <button class="btn">Signin</button>
 </form>
 <p>
-    Don't have an account yet ? <a href="/users/signup">signup</a>
+    Don't have an account yet ? <a href="/auth/signup">Signup</a>
 </p>
+
+<div class = "image-login">
+    <img class = "login-image" src="/images/virtualbook.jpg" alt="virtual book club">
+</div>
