@@ -2,14 +2,14 @@
 
 <form method="post" enctype="multipart/form-data" action="/users/edit" class="form">
     <label for="firstName">First name</label>
-    <input class="input" type="text" id="firstName" name="firstName" value="{{currentUser.firstName}}">
+    <input class="input" type="text" id="firstName" name="firstName" value="{{currentUser.firstName}}"><br>
     <label for="lastName">Last name</label>
-    <input class="input" type="text" id="lastName" name="lastName" value="{{currentUser.lastName}}">
+    <input class="input" type="text" id="lastName" name="lastName" value="{{currentUser.lastName}}"><br>
     <label for="interest">My interests</label>
-    <input class="input" type="text" id="interest" name="interest">
-    <label for="email">email</label>
-    <input id="email" class="input" type="email" name="email" value="{{currentUser.email}}">
-    <label for="avatar">Avatar</label><br>
-    <input id="avatar" class="input" type="file" name="avatar" value="{{currentUser.avatar}}">
+    <input class="input" type="text" id="interest" name="interest"><br>
+    <label for="email">Email</label>
+    <input id="email" class="input" type="email" name="email" value="{{currentUser.email}}"><br>
+    <label for="avatar">Avatar</label>
+    <input id="avatar" class="input" type="file" name="avatar" value="{{currentUser.avatar}}"><br>
     <button class= "btn">Edit account</button>
 </form>
