@@ -1,5 +1,7 @@
+<div class="editPagesMargin">
+<div>
 <h1>{{currentUser.firstName}} {{currentUser.lastName}}</h1>
-
+</div>
 <form method="post" enctype="multipart/form-data" action="/users/edit" class="form">
     <label for="firstName">First name</label>
     <input class="input" type="text" id="firstName" name="firstName" value="{{currentUser.firstName}}"><br>
@@ -11,5 +13,10 @@
     <input id="email" class="input" type="email" name="email" value="{{currentUser.email}}"><br>
     <label for="avatar">Avatar</label>
     <input id="avatar" class="input" type="file" name="avatar" value="{{currentUser.avatar}}"><br>
-    <button class= "btn">Edit account</button>
+    <button class= "btn"> Edit account </button>
 </form>
+
+
+
+
+</div>
